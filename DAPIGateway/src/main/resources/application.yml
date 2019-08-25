@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: d-api-gateway
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+zuul:
+  sensitive-headers: Cookie, Set-Cookie
+  routes:
+    resource: 
+      path: /api/**
+      service-id: d-resource-service
+    oauth:
+      path: /oauth/**
+      service-id: d-oauth-service
+      
+
